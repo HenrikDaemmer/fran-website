@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:preview": "VITE_PREVIEW=1 vite build --base ./ --outDir dist-preview"
   },
   "dependencies": {
     "clsx": "^2.1.1",

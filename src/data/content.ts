@@ -11,7 +11,7 @@ export type ImageItem = {
   ratio?: string;
 };
 
-const img = (n: string) => `/images/fran-${n}.jpg`;
+const img = (n: string) => `${import.meta.env.BASE_URL}images/fran-${n}.jpg`;
 
 export const heroImage = img("73");
 export const portraitImage = img("78");
