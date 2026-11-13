@@ -53,7 +53,7 @@ number in `src/data/content.ts`.
 ## Versions
 
 - `v1` (git tag) – faithful rebuild of the Lovable site
-- `v2` (tag) – warmer design: real event photos, "Aus echten Events" polaroids, Oma story,
+- `v2` (branch) – warmer design: real event photos, "Aus echten Events" polaroids, Oma story,
   dark kitchen section, smoother carousel, scroll animations, paper texture
 - `v3` (branch) – Fran's feedback: bolder petrol/rust/saffron palette, gallery split into
   "Fotografiert von Luca" and "Schnappschüsse", "Über mich", shorter intro
