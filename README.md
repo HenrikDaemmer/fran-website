@@ -21,6 +21,14 @@ git push -u origin main
 
 (The repo is already initialised with a first commit.)
 
+## Hosting (free, commercial use allowed)
+
+**Netlify** or **Cloudflare Pages** – both free plans allow business sites.
+Import the GitHub repo, build command `npm run build`, output folder `dist`.
+`public/_redirects` makes `/galerie` work on reload (Netlify; Cloudflare Pages handles it automatically).
+
+> Vercel's free Hobby plan is for non-commercial use only – for Fran's business site you'd need Vercel Pro.
+
 ## Deploy on Vercel
 
 1. vercel.com → **Add New… → Project** → import the GitHub repo.
