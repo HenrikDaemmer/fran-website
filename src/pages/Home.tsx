@@ -470,7 +470,11 @@ function Reviews() {
 }
 
 function GalleryTeaser() {
-  const teaserItems = [galleryItems[0], galleryItems[1], galleryItems[8]];
+  // Bento-Raster: großes Bild links, kleinere rechts, letzte Kachel führt zur Galerie
+  const [table, dessert, salad, kitchen, octopus, more] = [0, 8, 5, 2, 1, 9].map(
+    (index) => galleryItems[index],
+  );
+  const remaining = galleryItems.length - 5;
 
   return (
     <section id="galerie" className="scroll-mt-20 py-24 md:py-32">
@@ -487,30 +491,32 @@ function GalleryTeaser() {
           </p>
         </div>
 
-        <div className="mt-14 grid grid-cols-2 gap-4 md:grid-cols-12 md:gap-6">
-          <DishImage
-            {...teaserItems[0]}
-            ratio="aspect-[4/3]"
-            className="col-span-2 md:col-span-7"
-          />
-          <DishImage
-            {...teaserItems[1]}
-            ratio="aspect-[4/5] md:aspect-auto md:h-full"
-            imageClassName="md:absolute md:inset-0"
-            className="md:col-span-5"
-          />
-          <DishImage
-            {...teaserItems[2]}
-            ratio="aspect-square"
-            className="col-span-2 md:col-span-5 md:col-start-8 md:-mt-24"
-          />
-        </div>
-        <div className="mt-10 text-center md:text-left">
+        <div className="mt-14 grid auto-rows-[150px] grid-cols-2 gap-3 sm:auto-rows-[200px] md:auto-rows-[230px] md:grid-cols-12 md:gap-5">
+          <DishImage {...table} ratio="h-full" className="col-span-2 row-span-2 md:col-span-7" />
+          <DishImage {...dessert} ratio="h-full" className="md:col-span-5" />
+          <DishImage {...salad} ratio="h-full" className="md:col-span-5" />
+          <DishImage {...kitchen} ratio="h-full" className="row-span-2 md:col-span-3 md:row-span-1" />
+          <DishImage {...octopus} ratio="h-full" className="md:col-span-4" />
+
           <Link
             to="/galerie"
-            className="inline-flex items-center gap-2 rounded-full border border-primary px-7 py-3.5 font-medium text-primary transition hover:bg-primary hover:text-primary-foreground"
+            aria-label={`Zur großen Galerie – ${remaining} weitere Bilder`}
+            className="group relative isolate overflow-hidden rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-background md:col-span-5"
           >
-            Zur großen Galerie <ArrowRight className="h-4 w-4" />
+            <img
+              src={more.src}
+              alt=""
+              loading="lazy"
+              className="absolute inset-0 -z-10 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
+            />
+            <div className="absolute inset-0 -z-10 bg-gradient-warm opacity-85 transition-opacity group-hover:opacity-75" />
+            <div className="flex h-full flex-col justify-between p-5 text-primary-foreground md:p-7">
+              <span className="font-display text-4xl md:text-5xl">+{remaining}</span>
+              <span className="flex items-center gap-2 text-sm font-medium md:text-base">
+                Zur großen Galerie
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </span>
+            </div>
           </Link>
         </div>
       </div>
