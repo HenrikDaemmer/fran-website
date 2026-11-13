@@ -46,6 +46,10 @@
   --color-ring: var(--ring);
   --font-display: "Playfair Display", Georgia, serif;
   --font-body: "Inter", "Lato", system-ui, sans-serif;
+  --font-hand: "Caveat", "Segoe Print", cursive;
+  --color-espresso: #24120d;
+  --color-espresso-soft: #3a2018;
+  --color-olive: var(--olive);
   --radius-lg: var(--radius);
 }
 
@@ -93,58 +97,89 @@
 @utility bg-gradient-caption {
   background: var(--gradient-caption);
 }
+@utility font-hand {
+  font-family: var(--font-hand);
+}
 @utility shadow-warm {
   box-shadow: var(--shadow-warm);
 }
 
-/* Karussell-Animationen (Meine Küche) */
-.carousel-enter-forward,
-.carousel-exit-forward,
-.carousel-enter-backward,
-.carousel-exit-backward {
-  animation-duration: 0.65s;
-  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
-  animation-fill-mode: both;
-}
-.carousel-preview-forward,
-.carousel-preview-backward {
-  animation-duration: 0.55s;
-  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
-  animation-fill-mode: both;
-}
-.carousel-enter-forward { animation-name: carousel-enter-forward; }
-.carousel-exit-forward { animation-name: carousel-exit-forward; }
-.carousel-enter-backward { animation-name: carousel-enter-backward; }
-.carousel-exit-backward { animation-name: carousel-exit-backward; }
-.carousel-preview-forward { animation-name: carousel-preview-forward; }
-.carousel-preview-backward { animation-name: carousel-preview-backward; }
-
-@keyframes carousel-enter-forward {
-  from { opacity: 0.45; transform: translateX(-100%); }
-  to { opacity: 1; transform: translateX(0); }
-}
-@keyframes carousel-exit-forward {
-  from { opacity: 1; transform: translateX(0); }
-  to { opacity: 0; transform: translateX(100%); }
-}
-@keyframes carousel-enter-backward {
-  from { opacity: 0.45; transform: translateX(100%); }
-  to { opacity: 1; transform: translateX(0); }
-}
-@keyframes carousel-exit-backward {
-  from { opacity: 1; transform: translateX(0); }
-  to { opacity: 0; transform: translateX(-100%); }
-}
-@keyframes carousel-preview-forward {
-  from { opacity: 0; transform: translateX(-36px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-@keyframes carousel-preview-backward {
-  from { opacity: 0; transform: translateX(36px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  [class*="carousel-"] { animation: none !important; }
+}
+
+/* ---------- v2: Wärme & Bewegung ---------- */
+
+/* Feine Papierstruktur über der ganzen Seite */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.32;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .22 0 0 0 0 .14 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Sanftes Einblenden beim Scrollen */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Langsamer Zoom im Hero */
+@keyframes ken-burns {
+  from { transform: scale(1.12); }
+  to { transform: scale(1); }
+}
+.animate-ken-burns {
+  animation: ken-burns 14s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Handgezeichnete Unterstreichung */
+@keyframes draw-line {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+.draw-line path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw-line 1.2s 0.6s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+/* Laufband */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 38s linear infinite;
+}
+
+/* Fortschrittsbalken im Karussell */
+@keyframes progress-fill {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.animate-progress {
+  transform-origin: left;
+  animation: progress-fill var(--progress-duration, 5s) linear forwards;
+}
+
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .animate-ken-burns, .animate-marquee, .animate-progress { animation: none; }
+  .draw-line path { animation: none; stroke-dashoffset: 0; }
 }
