@@ -40,8 +40,6 @@ export const serviceImages = {
 
 /** Bilder für „Gästestimmen“ */
 export const reviewImages = {
-  family: img("75"),
-  wedding: img("63"),
   wine: img("74"),
 };
 

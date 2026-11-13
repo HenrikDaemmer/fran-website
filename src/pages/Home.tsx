@@ -125,12 +125,15 @@ const tags = [
 function TagMarquee() {
   const row = [...tags, ...tags];
   return (
-    <div className="relative overflow-hidden bg-gradient-warm py-4 text-primary-foreground" aria-hidden="true">
-      <div className="animate-marquee flex w-max items-center">
+    <div
+      className="relative overflow-hidden border-y border-border/70 bg-background py-3 [mask-image:linear-gradient(90deg,transparent,black_12%,black_88%,transparent)]"
+      aria-hidden="true"
+    >
+      <div className="animate-marquee flex w-max items-center [animation-duration:70s]">
         {[...row, ...row].map((tag, index) => (
           <span key={index} className="flex items-center whitespace-nowrap">
-            <span className="px-6 font-display text-xl italic md:text-2xl">{tag}</span>
-            <span className="text-white/60">✦</span>
+            <span className="px-5 font-display text-base italic text-foreground/55 md:text-lg">{tag}</span>
+            <span className="text-xs text-primary/50">✦</span>
           </span>
         ))}
       </div>
@@ -434,75 +437,139 @@ function EventMoments() {
 
 /* --------------------------------------------------------------- Reviews */
 
-const reviews = [
-  {
-    quote:
-      "Wir konnten uns einfach zurücklehnen und den Abend genießen. Das Menü hat wunderbar zu uns gepasst – und unsere Gäste sprechen heute noch davon.",
-    name: "Beispielstimme · Private Feier",
-    image: reviewImages.family,
-    alt: "Reich gedeckter Tisch von oben",
-  },
-  {
-    quote:
-      "Von der ersten Idee bis zum letzten Dessert haben wir uns bestens begleitet gefühlt. Persönlich, herzlich und unglaublich lecker.",
-    name: "Beispielstimme · Hochzeit",
-    image: reviewImages.wedding,
-    alt: "Dessert mit Orangen, im Hintergrund weitere Gerichte",
-  },
-  {
-    quote:
-      "Essen und Weine haben perfekt zusammengespielt. Besonders schön war, wie aufmerksam Fran auf unsere Wünsche eingegangen ist.",
-    name: "Beispielstimme · Vinothek-Abend",
-    image: reviewImages.wine,
-    alt: "Gedeckte Tafel in der Vinothek zwischen Weinfässern",
-  },
-];
+const Stars = ({ className = "" }: { className?: string }) => (
+  <div className={`flex gap-1 ${className}`} role="img" aria-label="5 von 5 Sternen">
+    {Array.from({ length: 5 }).map((_, star) => (
+      <Star key={star} aria-hidden="true" className="h-4 w-4" fill="currentColor" />
+    ))}
+  </div>
+);
 
+/**
+ * Gästestimmen als lebendiges Raster: große Zitat-Karte, Bild-Karten und reine Text-Karten
+ * im Wechsel. Alle Texte sind Platzhalter („Beispielstimme“) bis echte Rezensionen vorliegen.
+ */
 function Reviews() {
   return (
-    <section id="stimmen" className="scroll-mt-20 bg-gradient-soft py-24 md:py-36">
+    <section id="stimmen" className="relative scroll-mt-20 overflow-hidden bg-gradient-soft py-24 md:py-36">
       <div className="mx-auto max-w-7xl px-6">
-        <Reveal className="mx-auto max-w-3xl text-center">
-          <p className="mb-4 text-sm uppercase tracking-[0.25em] text-primary">Gästestimmen</p>
-          <h2 className="font-display text-4xl leading-tight md:text-6xl">
-            Was <span className="text-gradient-warm">in Erinnerung</span> bleibt.
-          </h2>
-          <p className="mt-6 text-lg text-foreground/80">
+        <Reveal className="grid gap-6 md:grid-cols-12 md:items-end">
+          <div className="md:col-span-7">
+            <p className="mb-4 text-sm uppercase tracking-[0.25em] text-primary">Gästestimmen</p>
+            <h2 className="font-display text-4xl leading-tight md:text-6xl">
+              Was <span className="text-gradient-warm">in Erinnerung</span> bleibt.
+            </h2>
+          </div>
+          <p className="text-lg text-foreground/80 md:col-span-5">
             Gutes Essen verbindet. Die schönsten Rückmeldungen sind die, bei denen man merkt: Der
             Abend war mehr als nur ein Menü.
           </p>
         </Reveal>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {reviews.map((review, index) => (
-            <Reveal key={review.name} delay={index * 120}>
-              <figure className="h-full overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition duration-500 hover:-translate-y-1 hover:shadow-warm">
-                <img
-                  src={review.image}
-                  alt={review.alt}
-                  width={1600}
-                  height={1067}
-                  loading="lazy"
-                  className="aspect-[16/9] w-full object-cover"
-                />
-                <div className="p-7 md:p-8">
-                  <div className="flex gap-1 text-primary" role="img" aria-label="5 von 5 Sternen">
-                    {Array.from({ length: 5 }).map((_, star) => (
-                      <Star key={star} aria-hidden="true" className="h-4 w-4" fill="currentColor" />
-                    ))}
-                  </div>
-                  <blockquote className="mt-5 font-display text-xl leading-relaxed text-foreground/90">
-                    „{review.quote}“
-                  </blockquote>
-                  <figcaption className="mt-6 text-sm font-medium text-muted-foreground">
-                    {review.name}
-                  </figcaption>
-                </div>
-              </figure>
-            </Reveal>
-          ))}
+        <div className="mt-14 grid gap-5 md:grid-cols-6 md:gap-6">
+          {/* 1 – großes Zitat, nur Text */}
+          <Reveal className="md:col-span-4">
+            <figure className="relative h-full overflow-hidden rounded-3xl bg-gradient-warm p-8 text-white shadow-warm md:p-12">
+              <span aria-hidden="true" className="pointer-events-none absolute -bottom-24 right-4 font-display text-[16rem] leading-none text-white/10">
+                „
+              </span>
+              <Stars className="text-white/90" />
+              <blockquote className="relative mt-6 font-display text-2xl leading-snug md:text-4xl">
+                Wir konnten uns einfach zurücklehnen und den Abend genießen. Das Menü hat wunderbar
+                zu uns gepasst – und unsere Gäste sprechen heute noch davon.
+              </blockquote>
+              <figcaption className="mt-8 text-sm font-medium text-white/80">
+                Beispielstimme · Private Feier
+              </figcaption>
+            </figure>
+          </Reveal>
+
+          {/* 2 – Bild mit Zitat darüber */}
+          <Reveal delay={120} className="md:col-span-2 md:row-span-2">
+            <figure className="group relative isolate flex h-full min-h-[26rem] flex-col justify-end overflow-hidden rounded-3xl p-7 text-white">
+              <img
+                src={serviceImages.wedding}
+                alt="Festlich gedeckte Tafel mit Blumen und Kerzen"
+                loading="lazy"
+                className="absolute inset-0 -z-10 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
+              <Stars className="text-[#ffb58f]" />
+              <blockquote className="mt-4 font-display text-xl leading-relaxed">
+                „Von der ersten Idee bis zum letzten Dessert haben wir uns bestens begleitet gefühlt.
+                Persönlich, herzlich und unglaublich lecker.“
+              </blockquote>
+              <figcaption className="mt-5 text-sm text-white/75">Beispielstimme · Hochzeit</figcaption>
+            </figure>
+          </Reveal>
+
+          {/* 3 – kurze Text-Karte */}
+          <Reveal delay={80} className="md:col-span-2">
+            <figure className="h-full rotate-[-1deg] rounded-3xl border border-border bg-card p-7 shadow-sm transition duration-500 hover:rotate-0">
+              <blockquote className="font-hand text-3xl leading-tight text-foreground/90">
+                „Das Essen war das Gesprächsthema des ganzen Abends.“
+              </blockquote>
+              <figcaption className="mt-5 text-sm font-medium text-muted-foreground">
+                Beispielstimme · Geburtstag
+              </figcaption>
+            </figure>
+          </Reveal>
+
+          {/* 4 – Text-Karte, dunkel */}
+          <Reveal delay={160} className="md:col-span-2">
+            <figure className="relative h-full overflow-hidden rounded-3xl bg-espresso p-7 text-white">
+              <OliveBranch className="pointer-events-none absolute -bottom-4 -right-6 w-36 text-white/10" />
+              <Stars className="text-primary" />
+              <blockquote className="relative mt-4 text-lg leading-relaxed text-white/90">
+                „Unkompliziert in der Planung, großzügig auf dem Teller – genau so haben wir uns
+                unser Teamevent gewünscht.“
+              </blockquote>
+              <figcaption className="relative mt-5 text-sm text-white/60">
+                Beispielstimme · Firmenevent
+              </figcaption>
+            </figure>
+          </Reveal>
+
+          {/* 5 – Bild links, Text rechts */}
+          <Reveal className="md:col-span-4">
+            <figure className="grid h-full overflow-hidden rounded-3xl border border-border bg-card shadow-sm sm:grid-cols-2">
+              <img
+                src={reviewImages.wine}
+                alt="Gedeckte Tafel in der Vinothek zwischen Weinfässern"
+                loading="lazy"
+                className="aspect-[4/3] h-full w-full object-cover sm:aspect-auto"
+              />
+              <div className="flex flex-col justify-center p-7 md:p-9">
+                <Stars className="text-primary" />
+                <blockquote className="mt-4 font-display text-xl leading-relaxed text-foreground/90">
+                  „Essen und Weine haben perfekt zusammengespielt. Besonders schön war, wie
+                  aufmerksam Fran auf unsere Wünsche eingegangen ist.“
+                </blockquote>
+                <figcaption className="mt-5 text-sm font-medium text-muted-foreground">
+                  Beispielstimme · Vinothek-Abend
+                </figcaption>
+              </div>
+            </figure>
+          </Reveal>
+
+          {/* 6 – Einladung zur eigenen Rückmeldung */}
+          <Reveal delay={120} className="md:col-span-2">
+            <a
+              href="#kontakt"
+              className="group flex h-full flex-col justify-between rounded-3xl border-2 border-dashed border-primary/40 p-7 transition hover:border-primary hover:bg-primary/5"
+            >
+              <p className="font-hand text-3xl leading-tight text-primary">
+                Du warst schon Gast bei einem meiner Events?
+              </p>
+              <p className="mt-6 flex items-center gap-2 text-sm font-medium text-foreground/80">
+                Ich freu mich über deine Rückmeldung
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </p>
+            </a>
+          </Reveal>
         </div>
-        <p className="mt-6 text-center text-sm text-muted-foreground">
+
+        <p className="mt-8 text-center text-sm text-muted-foreground">
           Diese Stimmen sind Gestaltungsbeispiele und werden durch echte Kundenrezensionen ersetzt.
         </p>
       </div>
