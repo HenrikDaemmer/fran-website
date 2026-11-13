@@ -50,6 +50,15 @@ Import the GitHub repo, build command `npm run build`, output folder `dist`.
 To swap a photo: export it at ~1600 px long edge, drop it into `public/images/`, and change the
 number in `src/data/content.ts`.
 
+## Versions
+
+- `v1` (git tag) – faithful rebuild of the Lovable site
+- `v2` (branch, current) – warmer design: real event photos, "Aus echten Events" polaroids, Oma story,
+  dark kitchen section, smoother carousel, scroll animations, paper texture
+
+Go back to v1: `git checkout v1` (look) or `git checkout main` (the v1 branch).
+Make v2 the main version: `git checkout main && git merge v2`.
+
 ## Before going live
 
 - Fill in **Impressum** and **Datenschutz** (`src/pages/Legal.tsx`) – required for a German business site.

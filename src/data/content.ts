@@ -12,9 +12,12 @@ export type ImageItem = {
 };
 
 const img = (n: string) => `${import.meta.env.BASE_URL}images/fran-${n}.jpg`;
+/** Handyfotos von echten Events (aus dem Ordner „untitled folder“) */
+const photo = (name: string) => `${import.meta.env.BASE_URL}images/${name}.jpg`;
 
 export const heroImage = img("73");
-export const portraitImage = img("78");
+export const portraitImage = photo("fran-kueche");
+export const kitchenBwImage = img("78");
 
 /** Karussell „Meine Küche“ */
 export const dishes: ImageItem[] = [
@@ -29,16 +32,14 @@ export const dishes: ImageItem[] = [
 
 /** Bilder für „Was ich für dich tue“ */
 export const serviceImages = {
-  private: img("72"),
-  wedding: img("64"),
-  business: img("70"),
-  wine: img("43"),
+  private: photo("event-grazing"),
+  wedding: photo("event-tafel"),
+  business: photo("event-buffet"),
+  wine: photo("event-vinothek"),
 };
 
 /** Bilder für „Gästestimmen“ */
 export const reviewImages = {
-  family: img("75"),
-  wedding: img("63"),
   wine: img("74"),
 };
 
@@ -62,4 +63,22 @@ export const galleryItems: ImageItem[] = [
   { src: img("38"), alt: "Geschmortes Rind mit Püree auf grünen Fliesen", label: "Geschmortes Rind & Püree", ratio: "aspect-square" },
   { src: img("67"), alt: "Orangen-Dessert auf hellblauem Grund", label: "Leicht & fruchtig", ratio: "aspect-[4/3]" },
   { src: img("19"), alt: "Oktopus in dramatischem Licht", label: "Oktopus im Abendlicht", ratio: "aspect-[3/4]" },
+  { src: photo("event-anrichten"), alt: "Fran richtet eine lange Reihe Dessertteller an", label: "Kurz vor dem Servieren", ratio: "aspect-[3/4]" },
+  { src: photo("event-beerentarte"), alt: "Tarte mit Beeren und Sahnespirale", label: "Beerentarte", ratio: "aspect-[3/4]" },
+  { src: photo("event-garnelensuppe"), alt: "Suppe mit Garnelenspießen", label: "Suppe & Garnelenspieß", ratio: "aspect-[4/3]" },
+  { src: photo("event-sardellen"), alt: "Marinierte Sardellen in einer roten Schale", label: "Marinierte Sardellen", ratio: "aspect-[3/4]" },
+];
+
+/** „Aus echten Events“ – Polaroid-Leiste mit handschriftlichen Notizen */
+export const eventMoments: ImageItem[] = [
+  { src: photo("event-anrichten"), alt: "Fran richtet eine lange Reihe Dessertteller mit Blüten an", label: "60 Teller, ein Lächeln" },
+  { src: photo("event-fingerfood"), alt: "Fingerfood-Buffet mit Focaccia, Tomaten- und Olivenspießen", label: "Fingerfood zum Ankommen" },
+  { src: photo("event-burrata"), alt: "Burrata auf roten Beeten, im Hintergrund weitere Teller", label: "Burrata in Serie" },
+  { src: photo("event-antipasti"), alt: "Antipasti-Platten auf weißer Tischdecke", label: "Antipasti für alle" },
+  { src: photo("event-teller"), alt: "Knusprig gebackene Vorspeise auf Gemüse, viele Teller", label: "Gleich geht's raus!" },
+  { src: photo("event-sardellen"), alt: "Marinierte Sardellen in einer roten Keramikschale", label: "Ein Gruß aus dem Süden" },
+  { src: photo("event-desserts"), alt: "Viele Teller mit Schichtdessert und Beeren", label: "Dessert für die ganze Gesellschaft" },
+  { src: photo("event-tablett"), alt: "Tablett mit gefüllten Paprika wird getragen", label: "Frisch auf dem Tablett" },
+  { src: photo("event-bluetendessert"), alt: "Dessert mit essbaren Blüten", label: "Mit Blüten" },
+  { src: photo("event-garnelensuppe"), alt: "Suppe mit Garnelenspießen", label: "Suppe & Garnelen" },
 ];
