@@ -26,6 +26,7 @@ import {
   portraitImage,
   reviewImages,
   serviceImages,
+  snapshotItems,
 } from "@/data/content";
 import { usePageTitle } from "@/lib/usePageTitle";
 
@@ -78,7 +79,7 @@ function Hero() {
           <h1 className="max-w-4xl font-display text-5xl leading-[1.05] text-white md:text-7xl lg:text-8xl">
             Kochen mit Herz.
             <br />
-            <span className="relative inline-block italic text-[#ffb58f]">
+            <span className="relative inline-block italic text-saffron">
               Feiern
               <HandUnderline className="text-primary" />
             </span>{" "}
@@ -177,7 +178,7 @@ function About() {
               loading="lazy"
               className="absolute -bottom-10 -right-4 hidden w-36 rotate-[5deg] rounded-sm border-[6px] border-white object-cover shadow-xl sm:block md:-right-8 md:w-40"
             />
-            <span className="absolute -left-3 -top-4 rotate-[-8deg] rounded-sm bg-accent/90 px-4 py-1 font-hand text-xl text-accent-foreground shadow-sm">
+            <span className="absolute -left-3 -top-4 rotate-[-8deg] rounded-sm bg-saffron px-4 py-1 font-hand text-xl text-foreground shadow-sm">
               Landau ♥
             </span>
           </Reveal>
@@ -185,14 +186,16 @@ function About() {
 
         <div className="md:col-span-7">
           <Reveal>
-            <p className="mb-4 text-sm uppercase tracking-[0.25em] text-primary">Über Fran</p>
+            <p className="mb-4 text-sm uppercase tracking-[0.25em] text-primary">Über mich</p>
             <h2 className="font-display text-4xl leading-tight md:text-6xl">
-              Hallo, ich bin <span className="text-gradient-warm">Fran</span>.
+              Hallo, ich bin Franceska –{" "}
+              <span className="block text-3xl text-foreground/70 md:text-5xl">
+                aber alle nennen mich <span className="text-gradient-warm">Fran</span>.
+              </span>
             </h2>
           </Reveal>
           <Reveal delay={100}>
             <div className="mt-8 space-y-6 text-lg text-foreground/85">
-              <p>Hallo, ich bin Franceska – aber eigentlich nennt mich jeder einfach Fran.</p>
               <p>
                 Seit 8 Jahren stehe ich mit Leidenschaft am Herd, davon seit 4 Jahren als
                 Hausköchin in der <span className="font-medium text-foreground">Vinothek Sauer</span>{" "}
@@ -235,29 +238,30 @@ function About() {
 
 function OmaStory() {
   return (
-    <section className="relative overflow-hidden bg-accent/45 py-24 md:py-32">
-      <OliveBranch className="pointer-events-none absolute -left-8 bottom-6 w-56 rotate-[200deg] text-olive/30" />
+    <section className="relative overflow-hidden bg-petrol py-24 text-white md:py-32">
+      <OliveBranch className="pointer-events-none absolute -left-8 bottom-6 w-56 rotate-[200deg] text-white/15" />
+      <div className="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full bg-saffron/15 blur-[100px]" />
       <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-6 md:grid-cols-12">
         <Reveal className="md:col-span-4">
-          <p className="text-sm uppercase tracking-[0.25em] text-secondary">Die Geschichte dahinter</p>
-          <p className="mt-6 font-display text-8xl leading-none text-gradient-warm md:text-9xl">6</p>
-          <p className="mt-2 max-w-[14rem] text-foreground/75">
+          <p className="text-sm uppercase tracking-[0.25em] text-saffron">Die Geschichte dahinter</p>
+          <p className="mt-6 font-display text-8xl leading-none text-saffron md:text-9xl">6</p>
+          <p className="mt-2 max-w-[14rem] text-white/75">
             Restaurants in ganz Deutschland – eröffnet von Frans Oma.
           </p>
         </Reveal>
         <Reveal delay={150} className="md:col-span-8">
-          <blockquote className="font-display text-3xl leading-snug md:text-5xl">
-            „Etwas Echtes. Etwas, das nach <span className="italic text-primary">Hause</span>{" "}
+          <blockquote className="font-display text-3xl leading-snug text-white md:text-5xl">
+            „Etwas Echtes. Etwas, das nach <span className="italic text-saffron">Hause</span>{" "}
             schmeckt.“
           </blockquote>
-          <p className="mt-8 max-w-2xl text-lg text-foreground/80">
+          <p className="mt-8 max-w-2xl text-lg text-white/80">
             Die Leidenschaft fürs Kochen habe ich wahrscheinlich von meiner Oma. Sie ist einst aus
             Italien mit ihrer Familie ausgewandert, um in Deutschland für die Gastarbeiter
             Restaurants zu eröffnen. Am Ende betrieb sie 6 Restaurants in ganz Deutschland – mit
             authentischer, unverstellter italienischer Küche. Genau das versuche ich immer wieder in
             meine Menüs einfließen zu lassen.
           </p>
-          <Squiggle className="mt-6 w-28 text-primary/70" />
+          <Squiggle className="mt-6 w-28 text-saffron/80" />
         </Reveal>
       </div>
     </section>
@@ -353,19 +357,19 @@ function Kitchen() {
       className="relative scroll-mt-20 overflow-hidden bg-espresso py-24 text-white md:py-36"
     >
       <div className="pointer-events-none absolute -right-40 -top-40 h-[32rem] w-[32rem] rounded-full bg-primary/20 blur-[120px]" />
-      <div className="pointer-events-none absolute -bottom-40 -left-40 h-[28rem] w-[28rem] rounded-full bg-secondary/15 blur-[120px]" />
+      <div className="pointer-events-none absolute -bottom-40 -left-40 h-[28rem] w-[28rem] rounded-full bg-petrol/60 blur-[120px]" />
       <div className="relative mx-auto grid max-w-7xl items-center gap-16 px-6 md:grid-cols-12 md:gap-14">
         <Reveal className="order-2 md:order-1 md:col-span-6">
           <KitchenCarousel items={dishes} />
         </Reveal>
         <Reveal delay={120} className="order-1 md:order-2 md:col-span-6">
-          <p className="mb-4 text-sm uppercase tracking-[0.25em] text-[#ff9a73]">Meine Küche</p>
+          <p className="mb-4 text-sm uppercase tracking-[0.25em] text-saffron">Meine Küche</p>
           <h2 className="font-display text-4xl leading-tight text-white md:text-6xl">
             Regional. Mediterran.
             <br />
             <span className="text-gradient-warm">Ehrlich.</span>
           </h2>
-          <p className="mt-8 font-hand text-4xl text-[#ffb58f]">„Kennt man, aber anders.“</p>
+          <p className="mt-8 font-hand text-4xl text-saffron">„Kennt man, aber anders.“</p>
           <p className="mt-6 text-lg text-white/75">
             Das ist vielleicht das treffendste, was man über meine Küche sagen kann. Ich koche mit
             dem, was die Saison und die Region hergeben, lasse meine italienischen Wurzeln immer
@@ -494,7 +498,7 @@ function Reviews() {
                 className="absolute inset-0 -z-10 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
-              <Stars className="text-[#ffb58f]" />
+              <Stars className="text-saffron" />
               <blockquote className="mt-4 font-display text-xl leading-relaxed">
                 „Von der ersten Idee bis zum letzten Dessert haben wir uns bestens begleitet gefühlt.
                 Persönlich, herzlich und unglaublich lecker.“
@@ -517,9 +521,9 @@ function Reviews() {
 
           {/* 4 – Text-Karte, dunkel */}
           <Reveal delay={160} className="md:col-span-2">
-            <figure className="relative h-full overflow-hidden rounded-3xl bg-espresso p-7 text-white">
+            <figure className="relative h-full overflow-hidden rounded-3xl bg-petrol p-7 text-white">
               <OliveBranch className="pointer-events-none absolute -bottom-4 -right-6 w-36 text-white/10" />
-              <Stars className="text-primary" />
+              <Stars className="text-saffron" />
               <blockquote className="relative mt-4 text-lg leading-relaxed text-white/90">
                 „Unkompliziert in der Planung, großzügig auf dem Teller – genau so haben wir uns
                 unser Teamevent gewünscht.“
@@ -583,7 +587,7 @@ function GalleryTeaser() {
   const [table, dessert, salad, kitchen, octopus, more] = [0, 8, 5, 2, 1, 9].map(
     (index) => galleryItems[index],
   );
-  const remaining = galleryItems.length - 5;
+  const remaining = galleryItems.length + snapshotItems.length - 5;
 
   return (
     <section id="galerie" className="scroll-mt-20 py-24 md:py-32">
@@ -621,9 +625,9 @@ function GalleryTeaser() {
               loading="lazy"
               className="absolute inset-0 -z-10 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
             />
-            <div className="absolute inset-0 -z-10 bg-gradient-warm opacity-85 transition-opacity group-hover:opacity-75" />
+            <div className="absolute inset-0 -z-10 bg-petrol opacity-90 transition-opacity group-hover:opacity-80" />
             <div className="flex h-full flex-col justify-between p-5 text-primary-foreground md:p-7">
-              <span className="font-display text-4xl md:text-5xl">+{remaining}</span>
+              <span className="font-display text-4xl text-saffron md:text-5xl">+{remaining}</span>
               <span className="flex items-center gap-2 text-sm font-medium md:text-base">
                 Zur großen Galerie
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -667,14 +671,15 @@ const processSteps = [
 
 function Process() {
   return (
-    <section id="ablauf" className="scroll-mt-20 bg-gradient-soft py-24 md:py-36">
+    <section id="ablauf" className="relative scroll-mt-20 overflow-hidden bg-rust py-24 text-white md:py-36">
+      <OliveBranch className="pointer-events-none absolute -right-10 top-10 hidden w-72 text-white/10 md:block" />
       <div className="mx-auto max-w-7xl px-6">
         <Reveal className="mx-auto max-w-3xl text-center">
-          <p className="mb-4 text-sm uppercase tracking-[0.25em] text-secondary">So einfach geht’s</p>
-          <h2 className="font-display text-4xl leading-tight md:text-6xl">
-            Von der ersten Idee bis zum <span className="text-gradient-warm">großen Genuss</span>.
+          <p className="mb-4 text-sm uppercase tracking-[0.25em] text-saffron">So einfach geht’s</p>
+          <h2 className="font-display text-4xl leading-tight text-white md:text-6xl">
+            Von der ersten Idee bis zum <span className="italic text-saffron">großen Genuss</span>.
           </h2>
-          <p className="mt-6 text-lg text-foreground/80">
+          <p className="mt-6 text-lg text-white/85">
             Persönlich geplant, transparent vorbereitet und mit viel Herz umgesetzt.
           </p>
         </Reveal>
@@ -682,23 +687,23 @@ function Process() {
         <ol className="relative mt-16 grid gap-5 md:grid-cols-4 md:gap-4">
           <div
             aria-hidden="true"
-            className="absolute left-[12.5%] right-[12.5%] top-10 hidden border-t-2 border-dashed border-primary/30 md:block"
+            className="absolute left-[12.5%] right-[12.5%] top-10 hidden border-t-2 border-dashed border-white/35 md:block"
           />
           {processSteps.map((step, index) => (
             <Reveal
               as="li"
               key={step.number}
               delay={index * 140}
-              className="relative rounded-3xl border border-border bg-card p-7 md:border-0 md:bg-transparent md:p-4 md:text-center"
+              className="relative rounded-3xl border border-white/20 bg-white/5 p-7 md:border-0 md:bg-transparent md:p-4 md:text-center"
             >
-              <div className="relative z-10 mb-6 flex h-20 w-20 items-center justify-center rounded-full border border-primary/30 bg-background text-primary shadow-sm transition duration-300 hover:-rotate-6 hover:scale-105 md:mx-auto">
+              <div className="relative z-10 mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-background text-rust shadow-lg transition duration-300 hover:-rotate-6 hover:scale-105 md:mx-auto">
                 <step.icon aria-hidden="true" className="h-8 w-8" strokeWidth={1.5} />
-                <span className="absolute -right-2 -top-2 rounded-full bg-primary px-2.5 py-1 text-xs font-semibold text-primary-foreground">
+                <span className="absolute -right-2 -top-2 rounded-full bg-petrol px-2.5 py-1 text-xs font-semibold text-white">
                   {step.number}
                 </span>
               </div>
-              <h3 className="font-display text-2xl">{step.title}</h3>
-              <p className="mt-3 text-foreground/75">{step.text}</p>
+              <h3 className="font-display text-2xl text-white">{step.title}</h3>
+              <p className="mt-3 text-white/80">{step.text}</p>
             </Reveal>
           ))}
         </ol>
@@ -714,11 +719,11 @@ function Contact() {
     <section id="kontakt" className="relative scroll-mt-20 py-24 md:py-36">
       <div className="mx-auto max-w-5xl px-6">
         <Reveal>
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-warm p-10 shadow-warm md:p-16">
-            <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
+          <div className="relative overflow-hidden rounded-3xl bg-petrol p-10 shadow-[0_30px_80px_-30px_rgba(10,54,54,0.8)] md:p-16">
+            <div className="absolute -right-20 -top-20 h-80 w-80 rounded-full bg-rust/40 blur-3xl" />
             <OliveBranch className="pointer-events-none absolute -bottom-6 right-6 hidden w-48 text-white/20 md:block" />
             <div className="relative">
-              <p className="mb-4 text-sm uppercase tracking-[0.25em] text-white/80">Kontakt</p>
+              <p className="mb-4 text-sm uppercase tracking-[0.25em] text-saffron">Kontakt</p>
               <h2 className="font-display text-4xl leading-tight text-white md:text-6xl">
                 Lass uns reden.
               </h2>
@@ -744,7 +749,7 @@ function Contact() {
                   name="name"
                   aria-label="Dein Name"
                   placeholder="Dein Name"
-                  className="rounded-xl border border-white/30 bg-white/15 px-4 py-3.5 text-white outline-none placeholder:text-white/70 focus:bg-white/25"
+                  className="rounded-xl border border-white/30 bg-white/15 px-4 py-3.5 text-white outline-none placeholder:text-white/70 focus:border-saffron focus:bg-white/20"
                 />
                 <input
                   required
@@ -752,7 +757,7 @@ function Contact() {
                   name="email"
                   aria-label="Deine E-Mail"
                   placeholder="Deine E-Mail"
-                  className="rounded-xl border border-white/30 bg-white/15 px-4 py-3.5 text-white outline-none placeholder:text-white/70 focus:bg-white/25"
+                  className="rounded-xl border border-white/30 bg-white/15 px-4 py-3.5 text-white outline-none placeholder:text-white/70 focus:border-saffron focus:bg-white/20"
                 />
                 <textarea
                   required
@@ -760,11 +765,11 @@ function Contact() {
                   aria-label="Deine Nachricht"
                   rows={5}
                   placeholder="Was planst du? (Anlass, Datum, Personenzahl …)"
-                  className="rounded-xl border border-white/30 bg-white/15 px-4 py-3.5 text-white outline-none placeholder:text-white/70 focus:bg-white/25 md:col-span-2"
+                  className="rounded-xl border border-white/30 bg-white/15 px-4 py-3.5 text-white outline-none placeholder:text-white/70 focus:border-saffron focus:bg-white/20 md:col-span-2"
                 />
                 <button
                   type="submit"
-                  className="rounded-full bg-background px-7 py-3.5 text-base font-medium text-foreground transition hover:-translate-y-0.5 hover:bg-background/90 md:col-span-2"
+                  className="rounded-full bg-gradient-warm px-7 py-3.5 text-base font-medium text-white shadow-warm transition hover:-translate-y-0.5 hover:opacity-95 md:col-span-2"
                 >
                   Nachricht senden →
                 </button>
@@ -777,7 +782,7 @@ function Contact() {
                 <span className="opacity-50">·</span>
                 <span>Vinothek Sauer, Landau</span>
               </div>
-              <p className="mt-8 font-hand text-3xl text-white">Ich freu mich auf dich! – Fran</p>
+              <p className="mt-8 font-hand text-3xl text-saffron">Ich freu mich auf dich! – Fran</p>
             </div>
           </div>
         </Reveal>

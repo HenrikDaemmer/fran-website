@@ -53,8 +53,10 @@ number in `src/data/content.ts`.
 ## Versions
 
 - `v1` (git tag) – faithful rebuild of the Lovable site
-- `v2` (branch, current) – warmer design: real event photos, "Aus echten Events" polaroids, Oma story,
+- `v2` (tag) – warmer design: real event photos, "Aus echten Events" polaroids, Oma story,
   dark kitchen section, smoother carousel, scroll animations, paper texture
+- `v3` (branch) – Fran's feedback: bolder petrol/rust/saffron palette, gallery split into
+  "Fotografiert von Luca" and "Schnappschüsse", "Über mich", shorter intro
 
 Go back to v1: `git checkout v1` (look) or `git checkout main` (the v1 branch).
 Make v2 the main version: `git checkout main && git merge v2`.

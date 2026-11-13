@@ -43,7 +43,7 @@ export const reviewImages = {
   wine: img("74"),
 };
 
-/** Galerie – Index 0, 1 und 8 erscheinen auch als Vorschau auf der Startseite */
+/** Galerie: professionelle Fotos von Luca – Index 0, 1, 2, 5, 8, 9 erscheinen auch als Vorschau auf der Startseite */
 export const galleryItems: ImageItem[] = [
   { src: img("71"), alt: "Reich gedeckter Tisch mit Oktopus, Brot, Salat und Desserts", label: "Die ganze Tafel", ratio: "aspect-[4/3]" },
   { src: img("23"), alt: "Gegrillter Oktopus mit Zitrone", label: "Oktopus & gegrillte Zitrone", ratio: "aspect-[4/5]" },
@@ -63,11 +63,29 @@ export const galleryItems: ImageItem[] = [
   { src: img("38"), alt: "Geschmortes Rind mit Püree auf grünen Fliesen", label: "Geschmortes Rind & Püree", ratio: "aspect-square" },
   { src: img("67"), alt: "Orangen-Dessert auf hellblauem Grund", label: "Leicht & fruchtig", ratio: "aspect-[4/3]" },
   { src: img("19"), alt: "Oktopus in dramatischem Licht", label: "Oktopus im Abendlicht", ratio: "aspect-[3/4]" },
-  { src: photo("event-anrichten"), alt: "Fran richtet eine lange Reihe Dessertteller an", label: "Kurz vor dem Servieren", ratio: "aspect-[3/4]" },
-  { src: photo("event-beerentarte"), alt: "Tarte mit Beeren und Sahnespirale", label: "Beerentarte", ratio: "aspect-[3/4]" },
-  { src: photo("event-garnelensuppe"), alt: "Suppe mit Garnelenspießen", label: "Suppe & Garnelenspieß", ratio: "aspect-[4/3]" },
-  { src: photo("event-sardellen"), alt: "Marinierte Sardellen in einer roten Schale", label: "Marinierte Sardellen", ratio: "aspect-[3/4]" },
 ];
+
+/** Galerie: Schnappschüsse von echten Events (Handyfotos) */
+export const snapshotItems: ImageItem[] = [
+  { src: photo("event-anrichten"), alt: "Fran richtet eine lange Reihe Dessertteller an", label: "Kurz vor dem Servieren" },
+  { src: photo("event-tafel"), alt: "Festlich gedeckte lange Tafel mit Blumen und Kerzen", label: "Festlich gedeckte Tafel" },
+  { src: photo("event-fingerfood"), alt: "Fingerfood-Buffet mit Focaccia und Spießen", label: "Fingerfood zum Ankommen" },
+  { src: photo("event-grazing"), alt: "Grazing Board mit Käse, Wurst und Obst", label: "Grazing Board" },
+  { src: photo("event-burrata"), alt: "Burrata auf roten Beeten", label: "Burrata in Serie" },
+  { src: photo("event-buffet"), alt: "Langes Buffet mit vielen Schalen", label: "Buffet für viele Gäste" },
+  { src: photo("event-beerentarte"), alt: "Tarte mit Beeren und Sahnespirale", label: "Beerentarte" },
+  { src: photo("event-antipasti"), alt: "Antipasti-Platten", label: "Antipasti für alle" },
+  { src: photo("event-vinothek"), alt: "Kleine Gerichte und Wein auf dem Tisch", label: "Kleine Teller & Wein" },
+  { src: photo("event-sardellen"), alt: "Marinierte Sardellen in einer roten Schale", label: "Marinierte Sardellen" },
+  { src: photo("event-desserts"), alt: "Viele Teller mit Schichtdessert und Beeren", label: "Dessert für alle" },
+  { src: photo("event-teller"), alt: "Knusprige Vorspeise auf Gemüse", label: "Gleich geht's raus!" },
+  { src: photo("event-garnelensuppe"), alt: "Suppe mit Garnelenspießen", label: "Suppe & Garnelen" },
+  { src: photo("event-tablett"), alt: "Tablett mit gefüllten Paprika", label: "Frisch auf dem Tablett" },
+  { src: photo("event-bluetendessert"), alt: "Dessert mit essbaren Blüten", label: "Mit Blüten" },
+];
+
+/** Name für die Bildnachweise */
+export const PHOTOGRAPHER = "Luca";
 
 /** „Aus echten Events“ – Polaroid-Leiste mit handschriftlichen Notizen */
 export const eventMoments: ImageItem[] = [

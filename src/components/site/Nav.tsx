@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react";
 
 const links = [
   { hash: "start", label: "Start" },
-  { hash: "ueber", label: "Über Fran" },
+  { hash: "ueber", label: "Über mich" },
   { hash: "leistungen", label: "Was ich mache" },
   { hash: "kueche", label: "Meine Küche" },
   { hash: "ablauf", label: "Ablauf" },

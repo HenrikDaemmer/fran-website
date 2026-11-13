@@ -7,9 +7,9 @@
   --foreground: #351a14;
   --card: #fff9f1;
   --card-foreground: #351a14;
-  --primary: #df5b30;
+  --primary: #d4542a;
   --primary-foreground: #fff9f1;
-  --secondary: #bd0468;
+  --secondary: #0f4c4c;
   --secondary-foreground: #fff9f1;
   --muted: #f3e5d6;
   --muted-foreground: #684f41;
@@ -17,15 +17,19 @@
   --accent-foreground: #43241c;
   --border: #e6d4c3;
   --input: #e6d4c3;
-  --ring: #df5b30;
+  --ring: #d4542a;
   --terracotta-dark: #c0401f;
   --olive: #6b6d3b;
   --warm-brown: #623e29;
 
-  --gradient-warm: linear-gradient(135deg, #df5b30 0%, #bd0468 100%);
-  --gradient-soft: linear-gradient(180deg, #fef5ea 0%, #fde2ce 100%);
+  --gradient-warm: linear-gradient(120deg, #c4421d 0%, #e0712c 100%);
+  --gradient-soft: linear-gradient(180deg, #fef5ea 0%, #f7e1c7 100%);
   --gradient-caption: linear-gradient(180deg, transparent 0%, #341912e0 100%);
-  --shadow-warm: 0 20px 60px -20px #c0401f59;
+  --shadow-warm: 0 20px 60px -20px #b03a1a66;
+  --petrol: #0f4c4c;
+  --petrol-deep: #0a3636;
+  --saffron: #eaa43c;
+  --rust: #c4421d;
 }
 
 @theme inline {
@@ -50,6 +54,10 @@
   --color-espresso: #24120d;
   --color-espresso-soft: #3a2018;
   --color-olive: var(--olive);
+  --color-petrol: var(--petrol);
+  --color-petrol-deep: var(--petrol-deep);
+  --color-saffron: var(--saffron);
+  --color-rust: var(--rust);
   --radius-lg: var(--radius);
 }
 
